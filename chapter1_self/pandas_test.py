@@ -52,6 +52,7 @@ def data_init():
     print('15、删除缺失值的数据： \n', df.dropna(how='any'), '\n')
     print('16、填充缺失值的数据： \n', df['column4'].fillna('这是空值！'), '\n')
 
+
 # 数据合并
 def data_combine():
     print('')
@@ -60,6 +61,7 @@ def data_combine():
 def main():
     # data_init()
     data_combine()
+
 
 if __name__ == '__main__':
     main()
