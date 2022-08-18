@@ -111,11 +111,11 @@ def data_read_write():
                        'Sales': [60000, 90000, 40000, 150000, 120000, 50000, 80000, 75000, 250000]})
 
     df.to_csv('df_csv.csv', encoding='utf-8', index=False)
-    df_csv = pd.read_csv('df_csv.csv')
+    df_csv = pd.read_csv('../files/before/df_csv.csv')
     print('32、csv文件数据： \n', df_csv, '\n')
 
     df.to_excel('df_excel.xlsx', sheet_name='Sheet1', index=False)
-    df_excel = pd.read_excel('df_excel.xlsx', 'Sheet1')
+    df_excel = pd.read_excel('../files/before/df_excel.xlsx', 'Sheet1')
     print('33、xlsx文件数据： \n', df_excel, '\n')
 
 

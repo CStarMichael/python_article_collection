@@ -7,14 +7,14 @@ def create_xlsx():
     sheet = mywb.active
     sheet.title = 'mynewtitle'
     print(mywb.sheetnames)
-    mywb.save('mynewtitle.xlsx')
+    mywb.save('/files/after/mynewtitle.xlsx')
 
 
 def copy_xlsx():
-    mywb = openpyxl.load_workbook('mynewtitle.xlsx')
+    mywb = openpyxl.load_workbook('../files/before/mynewtitle.xlsx')
     sheet = mywb.active
     sheet.title = '副本'
-    mywb.save('new.xlsx')
+    mywb.save('/files/after/new.xlsx')
 
 
 def create_sheet():
@@ -28,58 +28,58 @@ def create_sheet():
     mywb.create_sheet(index=2, title='第二个工作簿')
     print(mywb.sheetnames)
 
-    mywb.save('new.xlsx')
+    mywb.save('/files/after/new.xlsx')
 
 
 def del_sheet():
-    mywb = openpyxl.load_workbook('new.xlsx')
+    mywb = openpyxl.load_workbook('../files/before/new.xlsx')
     mywb.remove(mywb['Sheet1'])
-    mywb.save('new.xlsx')
+    mywb.save('/files/after/new.xlsx')
 
 
 def insert_cell():
-    mywb = openpyxl.load_workbook('new.xlsx')
+    mywb = openpyxl.load_workbook('../files/before/new.xlsx')
     mysheet = mywb['Sheet']
     mysheet['F6'] = 'new value'
-    mywb.save('new.xlsx')
+    mywb.save('/files/after/new.xlsx')
 
 
 def set_font():
-    mywb = openpyxl.load_workbook('new.xlsx')
+    mywb = openpyxl.load_workbook('../files/before/new.xlsx')
     mysheet = mywb['Sheet']
     font = Font(name='微软雅黑', size=32, italic=True)
     mysheet['F8'].font = font
     mysheet['F8'] = '你好，STYLES，蔡'
-    mywb.save('new.xlsx')
+    mywb.save('/files/after/new.xlsx')
 
 
 def sum_cell():
-    mywb = openpyxl.load_workbook('new.xlsx')
+    mywb = openpyxl.load_workbook('../files/before/new.xlsx')
     mysheet = mywb['Sheet']
     mysheet['A1'] = 500
     mysheet['A2'] = 800
     mysheet['B1'] = '=SUM(A1:A2)'
-    mywb.save('new.xlsx')
+    mywb.save('/files/after/new.xlsx')
 
 def set_row_height():
-    mywb = openpyxl.load_workbook('new.xlsx')
+    mywb = openpyxl.load_workbook('../files/before/new.xlsx')
     mysheet = mywb['Sheet']
     mysheet['C1'] = 'Tall row'
     mysheet['D2'] = 'Wide column'
 
     mysheet.row_dimensions[1].height = 65
     mysheet.column_dimensions['D'].width = 25
-    mywb.save('new.xlsx')
+    mywb.save('/files/after/new.xlsx')
 
 def merge_cell():
-    mywb = openpyxl.load_workbook('new.xlsx')
+    mywb = openpyxl.load_workbook('../files/before/new.xlsx')
     mysheet = mywb['Sheet']
     mysheet.merge_cells('E2:G3')
     mysheet.merge_cells('I4:I8')
-    mywb.save('new.xlsx')
+    mywb.save('/files/after/new.xlsx')
 
 def add_chart():
-    mywb = openpyxl.load_workbook('new.xlsx')
+    mywb = openpyxl.load_workbook('../files/before/new.xlsx')
     mysheet = mywb['第一个工作簿']
 
     for x in range(1, 10):
@@ -98,7 +98,7 @@ def add_chart():
     chartObject.height = 10
     # 在D2位置绘制图表
     mysheet.add_chart(chartObject, 'D2')
-    mywb.save('new.xlsx')
+    mywb.save('../files/after/new.xlsx')
 
 def main():
     # copyXlsx()
