@@ -14,7 +14,7 @@ def data_init():
     df['column4'] = ['one', 'two', 'three', 'four', np.nan, np.nan]
     # print('1、生成的日期为： \n', date, '\n')
     # print('2、生成的连续数组为： \n', value, '\n')
-    print('3、创建的DataFrame为： \n', df, '\n')
+    print('3、 创建的DataFrame为： \n', df, '\n')
 
     # df2 = pd.DataFrame({
     #     'column1': pd.date_range('20210101', periods=4, freq='7D'),
