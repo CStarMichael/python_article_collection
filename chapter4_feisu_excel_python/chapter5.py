@@ -132,6 +132,7 @@ def data_set():
 
     print(df.groupby(['continent']).mean(), '\n')
     print(df.groupby(['continent', 'country']).mean(), '\n')
+    print(df.loc[:, ['age', 'score', 'continent']].groupby(['continent']).agg(lambda x: x.max() - x.min()), '\n')
 
 
 def format_string(x):
@@ -144,6 +145,19 @@ def text_handle():
     users_cleaned = users.loc[:, 'name'].str.strip().str.capitalize()
     print(users_cleaned, '\n')
     print(users_cleaned.str.startswith('J'), '\n')
+
+
+def data_pivot_table():
+    data = [['Oranges', 'North', 12.30], ['Apples', 'South', 10.55], ['Oranges', 'South', 22.00],
+            ['Bananas', 'South', 5.90], ['Bananas', 'North', 31.30], ['Oranges', 'North', 13.10]]
+    sales = pd.DataFrame(data=data, columns=['Fruit', 'Region', 'Revenue'])
+    print(sales, '\n')
+
+    pivot = pd.pivot_table(sales, index='Fruit', columns='Region', values='Revenue', aggfunc='sum', margins=True,
+                           margins_name='Total')
+    print(pivot, '\n')
+    print(pd.melt(pivot.iloc[:-1, :-1].reset_index(), id_vars='Fruit', value_vars=['North', 'South'],
+                  value_name='Revenue'), '\n')
 
 
 def dataframe_concat():
@@ -160,9 +174,9 @@ def dataframe_concat():
     print(pd.concat([df, more_users], axis=0), '\n')
     # print(pd.concat([df, more_users], axis=1), '\n')
 
-    df1 = pd.DataFrame(data=[[1, 2], [3, 4], [5, 6]], columns=["A", "B"])
+    df1 = pd.DataFrame(data=[[1, 2], [3, 4], [5, 6]], columns=['A', 'B'])
     print(df1, '\n')
-    df2 = pd.DataFrame(data=[[10, 20], [30, 40]], columns=["C", "D"], index=[1, 3])
+    df2 = pd.DataFrame(data=[[10, 20], [30, 40]], columns=['C', 'D'], index=[1, 3])
     print(df2, '\n')
     # print(df1.join(df2, how='inner'), '\n')
     # print(df1.join(df2, how='left'), '\n')
@@ -180,9 +194,10 @@ def dataframe_concat():
 def main():
     # dataframe_simple()
     # data_handle()
-    data_set()
+    # data_set()
     # text_handle()
     # dataframe_concat()
+    data_pivot_table()
 
 
 if __name__ == '__main__':
