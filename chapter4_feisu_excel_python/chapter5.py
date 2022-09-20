@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def dataframe_simple():
-    # df = pd.read_excel('../files/feisu/course_participants.xlsx')
+    # df = pd.read_excel('/files/course_participants.xlsx')
     # print(df)
 
     data = [['Mark', 55, 'Italy', 4.5, 'Europe'], ['John', 33, 'USA', 6.7, 'America'],
