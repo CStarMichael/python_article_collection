@@ -26,7 +26,7 @@ def remove_img():
 def remove_pdf():
     page_num = 0
     # pdf_file = input("请输入 pdf 地址：")
-    pdf_file = 'D:\Work\\aa.pdf'
+    pdf_file = 'E:\Work\\bb.pdf'
     pdf = fitz.open(pdf_file);
     zoom = 4
     mat = fitz.Matrix(zoom, zoom)
@@ -37,7 +37,7 @@ def remove_pdf():
             rgb = pixmap.pixel(pos[0], pos[1])
             if (sum(rgb) >= 620):
                 pixmap.set_pixel(pos[0], pos[1], (255, 255, 255))
-        pixmap.pil_save(f"d:/Work/pdf_imgs/{page_num}.png", dpi=(30000, 30000))
+        pixmap.pil_save(f"E:/Work/pdf_imgs/{page_num}.png", dpi=(30000, 30000))
         page_end = time.perf_counter()
         print(f"第{page_num + 1}页水印去除完成，耗时 {page_end - page_start:0.4f} 秒。")
         page_num = page_num + 1
@@ -45,7 +45,7 @@ def remove_pdf():
 
 def pic2pdf():
     # pic_dir = input("请输入图片文件夹路径：")
-    pic_dir = 'D:\Work\pdf_imgs'
+    pic_dir = 'E:\Work\pdf_imgs'
 
     pdf = fitz.open()
     img_files = sorted(os.listdir(pic_dir), key=lambda x: int(str(x).split('.')[0]))
@@ -55,7 +55,7 @@ def pic2pdf():
         pdfbytes = imgdoc.convert_to_pdf()
         imgpdf = fitz.open("pdf", pdfbytes)
         pdf.insert_pdf(imgpdf)
-    pdf.save("d:/demo.pdf")
+    pdf.save("E:/demo.pdf")
     pdf.close()
 
 

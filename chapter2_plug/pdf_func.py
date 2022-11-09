@@ -83,12 +83,13 @@ def extract_table_info(filepath):
     """
     with pdfplumber.open(filepath) as pdf:
         # 获取第18页数据
-        page = pdf.pages[17]
+        page = pdf.pages[0]
         # 如果一页有一个表格，设置表格的第一行为表头，其余为数据
         table_info = page.extract_table()
         table_info = page.extract_tables()
         df_table = pd.DataFrame(table_info[1:], columns=table_info[0])
-        df_table.to_csv('../files/afer/dmeo.csv', index=False, encoding='gbk')
+        # df_table.to_csv('../files/afer/dmeo.csv', index=False, encoding='gbk')
+        df_table.to_csv('E:\\mm\\企业所得税季度A类(2022-07-01 至 2022-09-30).csv', index=False, encoding='gbk')
 
         # 如果一页有多个表格，对应的数据是一个三维数组
         # tables_info = page.extract_tables()
@@ -102,7 +103,7 @@ def extract_table_info(filepath):
 # 传入文件绝对路径 保留pdf原格式
 def pdf_to_word():
     # 正则获取不含文件类型后缀的部分，用于组成word文档绝对路径
-    pdf_file = '../files/before/aa.pdf'
+    pdf_file = 'E:\\mm\\增值税及附加税费（一般纳税人）(2022-07-01 至 2022-07-31).pdf'
     name = re.findall(r'(.*?)\.', pdf_file)[0]
     docx_file = f'{name}.docx'
     print(docx_file)
@@ -129,17 +130,19 @@ def pdf_2_word():
 def main():
     # 文件拆分
     filename = '22-11-MA.pdf'
-    filepath = '../files/before/22-11-MA.pdf'
-    save_dirpath = '../files/after/'
-    split_pdf(filename, filepath, save_dirpath, step=191)
+    # filepath = '../files/before/22-11-MA.pdf'
+    # save_dirpath = '../files/after/'
+    # split_pdf(filename, filepath, save_dirpath, step=191)
 
     # 文件合并
     # read_dirpath = '../files/before/'
     # save_filepath = '../files/after/'
     # concat_pdf(filename, read_dirpath, save_filepath)
     #
-    # # 提取表格内容
+    # 提取表格内容
+    # filepath = 'E:\\mm\\企业所得税季度A类(2022-07-01 至 2022-09-30).pdf'
     # extract_table_info(filepath)
+    pdf_to_word()
 
 
 if __name__ == '__main__':
