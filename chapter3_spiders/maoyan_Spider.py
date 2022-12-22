@@ -6,7 +6,7 @@ from urllib import request, parse
 
 class MaoyanSpider(object):
     def __init__(self):
-        self.url = 'https://www.maoyan.com/board/4?timeStamp=1656237138551&channelId=40011&index=9&signKey=751cfc03b18fb5b0d0570f612f6df985&sVersion=1&webdriver=false&offset={}'
+        self.url = 'https://www.maoyan.com/board?timeStamp=1667716020270&channelId=40011&index=10&signKey=b433550d96a864d9f382476f338acf71'
 
     def get_html(self, url):
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36 Edg/103.0.1264.37'}
