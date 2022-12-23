@@ -208,10 +208,10 @@ sun_xls_path = r'E:\Work\Workspaces\Anaconda\data\sun\多层索引.xlsx'
 file_path = r'E:\Work\Workspaces\Anaconda\data'
 newfile = r'E:\Work\Workspaces\Anaconda\data\data.csv'
 # data = pd.read_excel(sun_xls_path, index_col='序号', parse_dates=['出生年月'])
-data = pd.read_excel(sun_xls_path, sheet_name='有序',index_col=[0,1])
+data = pd.read_excel(sun_xls_path, sheet_name='无序',index_col=[0,1])
 # data = pd.read_excel(sun_xls_path, sheet_name='有序')
 # data = data.set_index('班级','学号')
-print(data.head(),'\n')
+print(data,'\n')
 
 #
 # data = pd.read_excel(xls_path, skiprows=8,usecols='F:I',
@@ -345,6 +345,7 @@ print(data.head(),'\n')
 
 # result = data_ji['语文'] + data_ji['数学']
 # result = data_ji['语文'].add(data_ji['数学'])
-
-data2 = data.loc[:,:]
-print(data2, '\n')
+data2 = data.sort_index(level='科目')
+data3 = data2.loc[('语文', slice(None)),:]
+# data2 = data.loc[('1班',slice(None)),:]
+print(data3, '\n')
